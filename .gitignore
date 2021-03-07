@@ -1,1 +1,3 @@
 contacts.json
+*.csv
+.ipynb_checkpoints
