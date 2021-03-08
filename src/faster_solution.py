@@ -3,6 +3,10 @@ import pandas as pd
 from tqdm import tqdm
 
 
+memory = {}
+clusters = {}
+
+
 def add_to_memory(user_id, value):
     if value != "":
         if value in memory:
@@ -16,9 +20,6 @@ def main():
     npdata = df.values
 
     print(df.head())
-
-    memory = {}
-    clusters = {}
     
     for row in tqdm(npdata, total=npdata.shape[0]):
         user_id = row[0]
@@ -46,4 +47,10 @@ def main():
         output.append({"ticket_id": user_id,  "ticket_trace/contact": answer})
 
     output_df = pd.DataFrame(output)
-    output_df.head(20)
+    print(output_df.head(20))
+
+    filename = input("Save as: ")
+    output_df.to_csv(filename, index=False)
+
+
+main()
