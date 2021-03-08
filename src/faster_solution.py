@@ -43,7 +43,7 @@ def main():
     for user_id, trace in tqdm(sorted(clusters.items()), total=len(clusters.items())):
         contacts = np.sum(npdata[list(trace), 3])
         trace = "-".join([str(trace) for trace in sorted(trace)])
-        answer = "{},{}".format(trace, contacts)
+        answer = "{}, {}".format(trace, contacts)
         output.append({"ticket_id": user_id,  "ticket_trace/contact": answer})
 
     output_df = pd.DataFrame(output)
